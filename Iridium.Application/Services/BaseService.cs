@@ -1,6 +1,6 @@
-using Iridium.Core.Constants;
-using Iridium.Core.Models;
+using Iridium.Application.Models;
 using Iridium.Domain.Common;
+using Iridium.Domain.Constants;
 using Iridium.Domain.Entities;
 using Iridium.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;

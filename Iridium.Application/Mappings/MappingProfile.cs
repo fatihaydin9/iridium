@@ -1,5 +1,5 @@
 using AutoMapper;
-using Iridium.Application.CQRS.Todos.Briefs;
+using Iridium.Application.Dtos;
 using Iridium.Domain.Entities;
 
 namespace Iridium.Application.Mappings;

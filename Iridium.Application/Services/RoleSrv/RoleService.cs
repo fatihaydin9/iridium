@@ -1,4 +1,4 @@
-using Iridium.Core.Models;
+using Iridium.Application.Models;
 using Iridium.Persistence.Contexts;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;

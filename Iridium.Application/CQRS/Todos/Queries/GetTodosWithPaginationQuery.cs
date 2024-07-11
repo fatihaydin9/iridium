@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Iridium.Application.CQRS.Todos.Briefs;
+using Iridium.Application.Dtos;
 using Iridium.Application.Mappings;
 using Iridium.Domain.Common;
 using Iridium.Persistence.Contexts;

@@ -1,16 +1,15 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using Iridium.Core.Cache;
-using Iridium.Core.Constants;
-using Iridium.Core.Constants.Validations;
-using Iridium.Core.Enums;
-using Iridium.Core.Models;
+using Iridium.Application.Dtos;
+using Iridium.Application.Models;
+using Iridium.Domain.Cache;
 using Iridium.Domain.Common;
+using Iridium.Domain.Constants;
+using Iridium.Domain.Constants.Validations;
 using Iridium.Domain.Entities;
-using Iridium.Domain.Models.RequestModels;
-using Iridium.Domain.Models.ResponseModels;
-using Iridium.Infrastructure.Extensions;
+using Iridium.Domain.Enums;
+using Iridium.Domain.Extensions;
 using Iridium.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
@@ -26,7 +25,7 @@ public class AuthService : BaseService, IAuthService
     {
     }
 
-    public async Task<ServiceResult<bool>> RegisterUser(UserRegisterRequest registerRequest)
+    public async Task<ServiceResult<bool>> RegisterUser(UserRegisterDto registerRequest)
     {
         // TODO: Phone Validation
         //if (!registerRequest.PhoneNumber.IsValidPhoneNumber())
@@ -105,7 +104,7 @@ public class AuthService : BaseService, IAuthService
         return GetSucceededResult();
     }
 
-    public async Task<ServiceResult<User>> GetAuthenticatedUser(UserLoginRequest loginRequest)
+    public async Task<ServiceResult<User>> GetAuthenticatedUser(UserLoginDto loginRequest)
     {
         var hashedPassword = loginRequest.Password.ToSHA256Hash();
 
@@ -118,7 +117,7 @@ public class AuthService : BaseService, IAuthService
             : new ServiceResult<User>(user);
     }
 
-    public async Task<ServiceResult<UserLoginResponse>> LoginAndGetUserToken(UserLoginRequest loginRequest)
+    public async Task<ServiceResult<UserTokenDto>> LoginAndGetUserToken(UserLoginDto loginRequest)
     {
         var hashedPassword = loginRequest.Password.ToSHA256Hash();
 
@@ -127,7 +126,7 @@ public class AuthService : BaseService, IAuthService
             .FirstOrDefaultAsync();
 
         if (user == null)
-            return new ServiceResult<UserLoginResponse>(ValidationConstants.MailAddressOrPasswordIsWrong);
+            return new ServiceResult<UserTokenDto>(ValidationConstants.MailAddressOrPasswordIsWrong);
 
         return await LoginUserAndGenerateJwtToken(user);
 
@@ -149,7 +148,7 @@ public class AuthService : BaseService, IAuthService
 
     #region Private Helper Methods
 
-    private async Task<ServiceResult<UserLoginResponse>> LoginUserAndGenerateJwtToken(User user)
+    private async Task<ServiceResult<UserTokenDto>> LoginUserAndGenerateJwtToken(User user)
     {
         var tokenHandler = new JwtSecurityTokenHandler();
         var symmetricKey = AppSettings.JwtConfig.SecretKey;
@@ -185,13 +184,13 @@ public class AuthService : BaseService, IAuthService
         var token = tokenHandler.CreateToken(tokenDescriptor);
         var accessToken = tokenHandler.WriteToken(token);
 
-        var loginResponse = new UserLoginResponse
+        var loginResponse = new UserTokenDto
         {
             AccessToken = accessToken,
             ExpiresIn = tokenExpireDate
         };
 
-        return new ServiceResult<UserLoginResponse>(loginResponse);
+        return new ServiceResult<UserTokenDto>(loginResponse);
     }
 
     private bool ValidateJwtToken(string token)

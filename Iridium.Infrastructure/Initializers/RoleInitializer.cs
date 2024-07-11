@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
-using Iridium.Core.Attributes;
-using Iridium.Core.Cache;
+using Iridium.Domain.Attributes;
+using Iridium.Domain.Cache;
 using Iridium.Domain.Common;
 using Iridium.Domain.Entities;
 using Iridium.Persistence.Contexts;
@@ -32,8 +32,10 @@ public class RoleInitializer
     private async Task EnsureRoles(Type roleType)
     {
         var fields = roleType.GetFields(BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy);
+
         var fullRoleField =
             fields.FirstOrDefault(f => f.GetCustomAttribute<RoleNameAttribute>()?.Name.Contains("Full") ?? false);
+
         var nonFullRoles = fields.Where(f => f != fullRoleField).ToList();
 
         long? fullRoleId = null;

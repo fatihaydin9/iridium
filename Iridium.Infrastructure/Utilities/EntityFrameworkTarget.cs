@@ -1,7 +1,7 @@
-﻿using Iridium.Core.Auth;
-using Iridium.Core.Enums;
-using Iridium.Core.Models;
+﻿using Iridium.Application.Models;
+using Iridium.Domain.AuthenticatedUser;
 using Iridium.Domain.Entities;
+using Iridium.Domain.Enums;
 using Iridium.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
@@ -9,7 +9,6 @@ using NLog;
 using NLog.Config;
 using NLog.Layouts;
 using NLog.Targets;
-using LogLevel = Iridium.Core.Enums.LogLevel;
 
 namespace Iridium.Infrastructure.Utilities;
 
@@ -104,15 +103,15 @@ public class EntityFrameworkTarget : TargetWithLayout
         }
     }
 
-    private LogLevel GetLogLevel(LogEventInfo logEvent)
+    private Domain.Enums.LogLevel GetLogLevel(LogEventInfo logEvent)
     {
         return logEvent.Level == NLog.LogLevel.Debug
-            ? LogLevel.Debug
+            ? Domain.Enums.LogLevel.Debug
             : logEvent.Level == NLog.LogLevel.Error
-                ? LogLevel.Error
+                ? Domain.Enums.LogLevel.Error
                 : logEvent.Level == NLog.LogLevel.Warn
-                    ? LogLevel.Warning
-                    : LogLevel.Info;
+                    ? Domain.Enums.LogLevel.Warning
+                    : Domain.Enums.LogLevel.Info;
     }
 }
 

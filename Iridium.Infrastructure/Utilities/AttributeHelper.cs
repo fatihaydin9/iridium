@@ -1,5 +1,5 @@
-﻿using Iridium.Core.Attributes.Base;
-using Iridium.Core.Models;
+﻿using Iridium.Application.Models;
+using Iridium.Domain.Attributes.Base;
 
 namespace Iridium.Infrastructure.Utilities;
 

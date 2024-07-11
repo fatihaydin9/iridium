@@ -1,4 +1,4 @@
-﻿using Iridium.Core.Exceptions;
+﻿using Iridium.Domain.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 

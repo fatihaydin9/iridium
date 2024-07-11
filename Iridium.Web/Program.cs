@@ -1,9 +1,9 @@
 using System.Text;
+using Iridium.Application.Models;
 using Iridium.Application.Services.AuthSrv;
 using Iridium.Application.Services.RoleSrv;
-using Iridium.Core.Auth;
-using Iridium.Core.Enums;
-using Iridium.Core.Models;
+using Iridium.Domain.AuthenticatedUser;
+using Iridium.Domain.Enums;
 using Iridium.Infrastructure;
 using Iridium.Infrastructure.Initializers;
 using Iridium.Persistence.Contexts;

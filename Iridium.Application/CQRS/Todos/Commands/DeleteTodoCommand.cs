@@ -1,4 +1,4 @@
-﻿using Iridium.Core.Exceptions;
+﻿using Iridium.Domain.Exceptions;
 using Iridium.Domain.Common;
 using Iridium.Domain.Entities;
 using Iridium.Domain.Events.TodoEvent;

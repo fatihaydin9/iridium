@@ -1,4 +1,4 @@
-﻿using Iridium.Core.Auth;
+﻿using Iridium.Domain.AuthenticatedUser;
 using Iridium.Infrastructure.Initializers;
 using Iridium.Persistence.Interceptors;
 using Microsoft.Extensions.DependencyInjection;

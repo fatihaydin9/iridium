@@ -1,4 +1,4 @@
-﻿using Iridium.Core.Enums;
+﻿using Iridium.Domain.Enums;
 using Microsoft.AspNetCore.Http;
 
 namespace Iridium.Infrastructure.Utilities;

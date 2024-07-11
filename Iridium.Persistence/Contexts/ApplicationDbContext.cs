@@ -1,5 +1,5 @@
 ﻿using System.Reflection;
-using Iridium.Core.Auth;
+using Iridium.Domain.AuthenticatedUser;
 using Iridium.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;

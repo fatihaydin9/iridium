@@ -1,15 +1,14 @@
+using Iridium.Application.Dtos;
 using Iridium.Domain.Common;
 using Iridium.Domain.Entities;
-using Iridium.Domain.Models.RequestModels;
-using Iridium.Domain.Models.ResponseModels;
 
 namespace Iridium.Application.Services.AuthSrv;
 
 public interface IAuthService
 {
-    Task<ServiceResult<bool>> RegisterUser(UserRegisterRequest registerRequest);
+    Task<ServiceResult<bool>> RegisterUser(UserRegisterDto registerRequest);
 
-    Task<ServiceResult<User>> GetAuthenticatedUser(UserLoginRequest loginRequest);
+    Task<ServiceResult<User>> GetAuthenticatedUser(UserLoginDto loginRequest);
 
-    Task<ServiceResult<UserLoginResponse>> LoginAndGetUserToken(UserLoginRequest loginRequest);
+    Task<ServiceResult<UserTokenDto>> LoginAndGetUserToken(UserLoginDto loginRequest);
 }

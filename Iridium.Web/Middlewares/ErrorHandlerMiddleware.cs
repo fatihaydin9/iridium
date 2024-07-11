@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using System.Text.Json;
 using IdentityServer4.Extensions;
-using Iridium.Core.Enums;
+using Iridium.Domain.Enums;
 using Iridium.Infrastructure.Utilities;
 using NLog;
 

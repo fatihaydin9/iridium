@@ -1,4 +1,4 @@
-﻿using Iridium.Core.Enums;
+﻿using Iridium.Domain.Enums;
 using Iridium.Infrastructure.Utilities;
 using NLog;
 using NLog.Config;

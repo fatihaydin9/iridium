@@ -7,21 +7,21 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="AutoMapper" Version="12.0.1"/>
-        <PackageReference Include="MediatR" Version="12.0.1"/>
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0"/>
+        <PackageReference Include="AutoMapper" Version="12.0.1" />
+        <PackageReference Include="MediatR" Version="12.0.1" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Iridium.Domain\Iridium.Domain.csproj"/>
-        <ProjectReference Include="..\Iridium.Persistence\Iridium.Persistence.csproj"/>
+        <ProjectReference Include="..\Iridium.Domain\Iridium.Domain.csproj" />
+        <ProjectReference Include="..\Iridium.Persistence\Iridium.Persistence.csproj" />
     </ItemGroup>
 
     <ItemGroup>
         <Compile Update="CQRS\Notes\Queries\GetNotesWithPaginationQuery.cs">
             <DependentUpon>NoteBriefDto.cs</DependentUpon>
         </Compile>
-        <Compile Update="CQRS\Todos\Queries\GetArticlesWithPaginationQuery.cs"/>
+        <Compile Update="CQRS\Todos\Queries\GetArticlesWithPaginationQuery.cs" />
     </ItemGroup>
 
 </Project>

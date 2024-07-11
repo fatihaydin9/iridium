@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 using Iridium.Application.CQRS.Todos.Commands;
-using Iridium.Core.Constants;
+using Iridium.Domain.Constants;
 
 namespace Iridium.Application.CQRS.Todos.Validators;
 
