@@ -17,8 +17,4 @@
         <Compile Remove="Entities\CreativeConcept.cs" />
     </ItemGroup>
 
-  <ItemGroup>
-    <Compile Remove="Entities\CreativeConcept.cs" />
-  </ItemGroup>
-
 </Project>

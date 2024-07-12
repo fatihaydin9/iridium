@@ -9,18 +9,6 @@ using NLog;
 using NLog.Config;
 using NLog.Layouts;
 using NLog.Targets;
-<<<<<<< HEAD
-=======
-using NLog;
-using System.Diagnostics;
-using Iridium.Infrastructure.Models;
-using Iridium.Domain.Entities;
-using LogLevel = Iridium.Domain.Enums.LogLevel;
-using Iridium.Infrastructure.Contexts;
-using Iridium.Infrastructure.Services;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
->>>>>>> fd81bf4 (Add AuditLog)
 
 namespace Iridium.Infrastructure.Utilities;
 
@@ -43,44 +31,6 @@ public class EntityFrameworkTarget : TargetWithLayout
     {
         var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
         optionsBuilder.UseSqlServer(ConnString.ToString());
-<<<<<<< HEAD
-=======
-        
-        using (var context = new ApplicationDbContext(optionsBuilder.Options, new MockAuthenticatedUserService()))
-        {
-            try
-            {
-                var param = logEvent.Parameters?.FirstOrDefault(p => p.GetType() == typeof(LogModel));
-                if (param != null)
-                {
-                    var logParam = (LogModel)param;
-                    var log = new Log
-                    {
-                        LogDate = DateTime.Now,
-                        ServiceType = ServiceType,
-                        LogType = logParam.LogType,
-                        Key = logParam.Key,
-                        KeyName = logParam.KeyName,
-                        LogLevel = GetLogLevel(logEvent),
-                        InComing = logParam.InComing,
-                        OutGoing = logParam.OutGoing,
-                        ServerName = MachineName.Render(logEvent),
-                        UserIp = logParam.IpAddress,
-                        ResponseStart = logParam.ResponseStart,
-                        ResponseEnd = logParam.ResponseEnd,
-                        DeviceType = logParam.DeviceType,
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = 1
-                    };
-                    context.Log.Add(log);
-                }
-                else if (logEvent.Level == NLog.LogLevel.Error && logEvent.Exception != null)
-                {
-                    var idx = 0;
-                    var lst = new List<LogExceptionModel>();
-                    var ipAddress = "";
-                    var curExc = logEvent.Exception;
->>>>>>> fd81bf4 (Add AuditLog)
 
         using (var context = new ApplicationDbContext(optionsBuilder.Options, new MockUserService()))
         {
