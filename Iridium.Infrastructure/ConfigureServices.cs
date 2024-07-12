@@ -49,6 +49,10 @@ public static class ConfigureServices
         // Add Fundamental Services
         services.AddHttpClient();
         services.AddMemoryCache();
+        
+        // Add Auth Services
+        services.AddHttpContextAccessor();
+        services.AddScoped<IAuthenticatedUserService, AuthenticatedUserService>();
 
         // Add Services
         services.AddScoped<EntitySaveChangesInterceptor>();

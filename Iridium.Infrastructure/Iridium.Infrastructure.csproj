@@ -25,4 +25,17 @@
         <ProjectReference Include="..\Iridium.Persistence\Iridium.Persistence.csproj" />
     </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Migrations\ApplicationDbContextModelSnapshot.cs" />
+    <Compile Remove="Migrations\20240427182949_AddAuditLog.cs" />
+    <Compile Remove="Migrations\20240427182949_AddAuditLog.Designer.cs" />
+    <Compile Remove="Migrations\20240427172313_UpdateSchema.cs" />
+    <Compile Remove="Migrations\20240427172313_UpdateSchema.Designer.cs" />
+    <Compile Remove="Migrations\20240427160807_Initial.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

@@ -5,6 +5,7 @@ bin/
 obj/
 *.exe
 *.dll
+.git/
 
 # Log dosyaları
 *.log
